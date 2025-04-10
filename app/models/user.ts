@@ -38,6 +38,8 @@ export default class User extends compose(BaseModel, AuthFinder) {
     @belongsTo(() => Role)
     declare role: BelongsTo<typeof Role>
 
-    @hasMany(() => Wall)
+    @hasMany(() => Wall, {
+        foreignKey: 'ownerId',
+    })
     declare ownedWalls: HasMany<typeof Wall>
 }
