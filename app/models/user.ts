@@ -7,6 +7,7 @@ import type { BelongsTo, HasMany, HasOne, ManyToMany } from '@adonisjs/lucid/typ
 import Profile from './profile.js'
 import Role from './role.js'
 import Wall from './wall.js'
+import Notification from './notification.js'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
     uids: ['email', 'nickname'],
@@ -42,6 +43,9 @@ export default class User extends compose(BaseModel, AuthFinder) {
         foreignKey: 'ownerId',
     })
     declare ownedWalls: HasMany<typeof Wall>
+
+    @hasMany(() => Notification)
+    declare notifications: HasMany<typeof Notification>
 
     @manyToMany(() => Wall, {
         pivotTable: 'walls_members',
