@@ -8,6 +8,7 @@ import hash from '@adonisjs/core/services/hash'
 
 import Notification from './notification.js'
 import Profile from './profile.js'
+import Follow from './follow.js'
 import Role from './role.js'
 import Wall from './wall.js'
 
@@ -48,6 +49,16 @@ export default class User extends compose(BaseModel, AuthFinder) {
 
     @hasMany(() => Notification)
     declare notifications: HasMany<typeof Notification>
+
+    @hasMany(() => Follow, {
+        foreignKey: 'followerUserId',
+    })
+    declare followers: HasMany<typeof Follow>
+
+    @hasMany(() => Follow, {
+        foreignKey: 'followedUserId',
+    })
+    declare followed: HasMany<typeof Follow>
 
     @manyToMany(() => Wall, {
         pivotTable: 'walls_members',
