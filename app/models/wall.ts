@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
+import { BaseModel, belongsTo, column, manyToMany } from '@adonisjs/lucid/orm'
 import User from './user.js'
-import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations'
 
 export default class Wall extends BaseModel {
     @column({ isPrimary: true })
@@ -26,4 +26,14 @@ export default class Wall extends BaseModel {
         foreignKey: 'ownerId',
     })
     declare owner: BelongsTo<typeof User>
+
+    @manyToMany(() => User, {
+        pivotTable: 'walls_members',
+        pivotColumns: ['local_role_id'],
+        pivotTimestamps: {
+            createdAt: 'created_at',
+            updatedAt: false,
+        },
+    })
+    declare members: ManyToMany<typeof User>
 }
