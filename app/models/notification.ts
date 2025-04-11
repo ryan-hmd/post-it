@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@adonisjs/lucid/orm'
-import type { NotificationStatus } from '../../types/enums.js'
+import type { NotificationStatus } from '#types/enums'
 
 export default class Notification extends BaseModel {
     @column({ isPrimary: true })
