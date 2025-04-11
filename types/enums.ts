@@ -19,3 +19,28 @@ export type NotificationStatus =
     | 'WALL_PROMOTED'
     | 'WALL_ANNOUNCEMENT'
     | 'SYSTEM_MESSAGE'
+
+export type ReportTargetType = 'users' | 'postit' | 'walls'
+
+export type ReportStatus = 'PENDING' | 'REVIEW' | 'REJECTED' | 'ACCEPTED'
+
+export type ReportReason =
+    | 'SPAM'
+    | 'HARASSMENT'
+    | 'HATE'
+    | 'NUDITY'
+    | 'VIOLENCE'
+    | 'FAKE_INFORMATION'
+    | 'COPYRIGHT'
+    | 'INAPPROPRIATE_PROFILE'
+    | 'SCAM'
+    | 'OFF_TOPIC'
+    | 'DUPLICATE'
+    | 'IMPERSONATION'
+    | 'SELF_HARM'
+    | 'CHILD_ABUSE'
+    | 'EXTREMISM_OR_TERRORISM'
+    | 'DOXING'
+    | 'MALWARE_OR_PHISHING'
+    | 'ILLEGAL_ACTIVITY'
+    | 'OTHER'
