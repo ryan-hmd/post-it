@@ -2,6 +2,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import User from './user.js'
+import Wall from './wall.js'
 
 export default class Postit extends BaseModel {
     @column({ isPrimary: true })
@@ -42,4 +43,7 @@ export default class Postit extends BaseModel {
         foreignKey: 'authorId',
     })
     declare author: BelongsTo<typeof User>
+
+    @belongsTo(() => Wall)
+    declare wall: BelongsTo<typeof Wall>
 }

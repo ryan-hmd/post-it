@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, belongsTo, column, manyToMany } from '@adonisjs/lucid/orm'
-import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations'
+import { BaseModel, belongsTo, column, hasMany, manyToMany } from '@adonisjs/lucid/orm'
+import type { BelongsTo, HasMany, ManyToMany } from '@adonisjs/lucid/types/relations'
+import Postit from './postit.js'
 import User from './user.js'
 
 export default class Wall extends BaseModel {
@@ -26,6 +27,9 @@ export default class Wall extends BaseModel {
         foreignKey: 'ownerId',
     })
     declare owner: BelongsTo<typeof User>
+
+    @hasMany(() => Postit)
+    declare threads: HasMany<typeof Postit>
 
     @manyToMany(() => User, {
         pivotTable: 'walls_members',
