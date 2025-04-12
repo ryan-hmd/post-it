@@ -1,5 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
+import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+import User from './user.js'
 
 export default class Postit extends BaseModel {
     @column({ isPrimary: true })
@@ -26,9 +28,7 @@ export default class Postit extends BaseModel {
     @column()
     declare content: string
 
-    /**
-     * We keep a track on Post-it / Response for moderation purpose
-     */
+    // We keep a track on Post-it / Response for moderation purpose
     @column()
     declare deleted: boolean
 
@@ -37,4 +37,9 @@ export default class Postit extends BaseModel {
 
     @column.dateTime({ autoCreate: true, autoUpdate: true })
     declare updatedAt: DateTime
+
+    @belongsTo(() => User, {
+        foreignKey: 'authorId',
+    })
+    declare author: BelongsTo<typeof User>
 }

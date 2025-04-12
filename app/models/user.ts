@@ -10,6 +10,7 @@ import Notification from './notification.js'
 import Profile from './profile.js'
 import Follow from './follow.js'
 import Report from './report.js'
+import Postit from './postit.js'
 import Role from './role.js'
 import Wall from './wall.js'
 
@@ -47,6 +48,11 @@ export default class User extends compose(BaseModel, AuthFinder) {
         foreignKey: 'ownerId',
     })
     declare ownedWalls: HasMany<typeof Wall>
+
+    @hasMany(() => Postit, {
+        foreignKey: 'authorId',
+    })
+    declare posts: HasMany<typeof Postit>
 
     @hasMany(() => Notification)
     declare notifications: HasMany<typeof Notification>
