@@ -1,5 +1,6 @@
 import { BaseModel, column, manyToMany } from '@adonisjs/lucid/orm'
 import type { ManyToMany } from '@adonisjs/lucid/types/relations'
+import Postit from './postit.js'
 import Wall from './wall.js'
 
 export default class Tag extends BaseModel {
@@ -18,4 +19,11 @@ export default class Tag extends BaseModel {
         pivotTimestamps: false
     })
     declare walls: ManyToMany<typeof Wall>
+
+    @manyToMany(() => Postit, {
+        pivotTable: 'tags_pivot',
+        pivotColumns: ['weight'],
+        pivotTimestamps: false
+    })
+    declare postits: ManyToMany<typeof Postit>
 }

@@ -1,8 +1,9 @@
 import { DateTime } from 'luxon'
-import { BaseModel, belongsTo, column, hasMany } from '@adonisjs/lucid/orm'
-import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
+import { BaseModel, belongsTo, column, hasMany, manyToMany } from '@adonisjs/lucid/orm'
+import type { BelongsTo, HasMany, ManyToMany } from '@adonisjs/lucid/types/relations'
 import User from './user.js'
 import Wall from './wall.js'
+import Tag from './tag.js'
 
 export default class Postit extends BaseModel {
     @column({ isPrimary: true })
@@ -54,4 +55,11 @@ export default class Postit extends BaseModel {
 
     @belongsTo(() => Wall)
     declare wall: BelongsTo<typeof Wall>
+
+    @manyToMany(() => Tag, {
+        pivotTable: 'tags_pivot',
+        pivotColumns: ['weight'],
+        pivotTimestamps: false
+    })
+    declare postits: ManyToMany<typeof Tag>
 }
