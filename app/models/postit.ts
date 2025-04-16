@@ -47,7 +47,9 @@ export default class Postit extends BaseModel {
     @hasMany(() => Postit)
     declare responses: HasMany<typeof Postit>
 
-    @belongsTo(() => Postit)
+    @belongsTo(() => Postit, {
+        foreignKey: 'threadId'
+    })
     declare root: BelongsTo<typeof Postit>
 
     @belongsTo(() => Wall)
