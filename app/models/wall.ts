@@ -3,6 +3,7 @@ import { BaseModel, belongsTo, column, hasMany, manyToMany } from '@adonisjs/luc
 import type { BelongsTo, HasMany, ManyToMany } from '@adonisjs/lucid/types/relations'
 import Postit from './postit.js'
 import User from './user.js'
+import Tag from './tag.js'
 
 export default class Wall extends BaseModel {
     @column({ isPrimary: true })
@@ -40,4 +41,11 @@ export default class Wall extends BaseModel {
         },
     })
     declare members: ManyToMany<typeof User>
+
+    @manyToMany(() => Tag, {
+        pivotTable: 'tags_pivot',
+        pivotColumns: ['weight'],
+        pivotTimestamps: false
+    })
+    declare tags: ManyToMany<typeof Tag>
 }
