@@ -1,10 +1,10 @@
 import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column, hasMany, manyToMany } from '@adonisjs/lucid/orm'
 import type { BelongsTo, HasMany, ManyToMany } from '@adonisjs/lucid/types/relations'
+import Comment from './comment.js'
 import User from './user.js'
 import Wall from './wall.js'
 import Tag from './tag.js'
-import Comment from './comment.js'
 
 export default class Postit extends BaseModel {
     @column({ isPrimary: true })
