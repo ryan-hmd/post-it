@@ -53,7 +53,7 @@ export default class Comment extends BaseModel {
     @hasMany(() => Comment, {
         foreignKey: 'parentCommentId'
     })
-    declare subcomments: HasMany<typeof Comment>
+    declare replies: HasMany<typeof Comment>
 
     @belongsTo(() => Comment, {
         foreignKey: 'parentCommentId'

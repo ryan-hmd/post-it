@@ -46,7 +46,7 @@ export default class Postit extends BaseModel {
     @hasMany(() => Comment, {
         foreignKey: 'threadId'
     })
-    declare comments: HasMany<typeof Comment>
+    declare replies: HasMany<typeof Comment>
 
     @belongsTo(() => Wall)
     declare wall: BelongsTo<typeof Wall>
