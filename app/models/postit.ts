@@ -4,6 +4,7 @@ import type { BelongsTo, HasMany, ManyToMany } from '@adonisjs/lucid/types/relat
 import User from './user.js'
 import Wall from './wall.js'
 import Tag from './tag.js'
+import Comment from './comment.js'
 
 export default class Postit extends BaseModel {
     @column({ isPrimary: true })
@@ -11,9 +12,6 @@ export default class Postit extends BaseModel {
 
     @column()
     declare pinned: boolean
-
-    @column()
-    declare threadId: number | null
 
     @column()
     declare wallId: number
@@ -45,13 +43,10 @@ export default class Postit extends BaseModel {
     })
     declare author: BelongsTo<typeof User>
 
-    @hasMany(() => Postit)
-    declare responses: HasMany<typeof Postit>
-
-    @belongsTo(() => Postit, {
+    @hasMany(() => Comment, {
         foreignKey: 'threadId'
     })
-    declare root: BelongsTo<typeof Postit>
+    declare comments: HasMany<typeof Comment>
 
     @belongsTo(() => Wall)
     declare wall: BelongsTo<typeof Wall>
