@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
-import { BaseModel, belongsTo, column, hasMany, hasOne, manyToMany } from '@adonisjs/lucid/orm'
-import type { BelongsTo, HasMany, HasOne, ManyToMany } from '@adonisjs/lucid/types/relations'
+import { BaseModel, belongsTo, column, hasMany, hasOne } from '@adonisjs/lucid/orm'
+import type { BelongsTo, HasMany, HasOne } from '@adonisjs/lucid/types/relations'
 
 import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
 import { compose } from '@adonisjs/core/helpers'
@@ -11,6 +11,7 @@ import Profile from './profile.js'
 import Follow from './follow.js'
 import Report from './report.js'
 import Postit from './postit.js'
+import Member from './member.js'
 import Role from './role.js'
 import Wall from './wall.js'
 
@@ -77,13 +78,6 @@ export default class User extends compose(BaseModel, AuthFinder) {
     })
     declare tickets: HasMany<typeof Report>
 
-    @manyToMany(() => Wall, {
-        pivotTable: 'walls_members',
-        pivotColumns: ['local_role_id'],
-        pivotTimestamps: {
-            createdAt: 'created_at',
-            updatedAt: false,
-        },
-    })
-    declare joinedWalls: ManyToMany<typeof Wall>
+    @hasMany(() => Member)
+    declare memberships: HasMany<typeof Member>
 }

@@ -2,6 +2,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column, hasMany, manyToMany } from '@adonisjs/lucid/orm'
 import type { BelongsTo, HasMany, ManyToMany } from '@adonisjs/lucid/types/relations'
 import Postit from './postit.js'
+import Member from './member.js'
 import User from './user.js'
 import Tag from './tag.js'
 
@@ -32,20 +33,13 @@ export default class Wall extends BaseModel {
     @hasMany(() => Postit)
     declare threads: HasMany<typeof Postit>
 
-    @manyToMany(() => User, {
-        pivotTable: 'walls_members',
-        pivotColumns: ['local_role_id'],
-        pivotTimestamps: {
-            createdAt: 'created_at',
-            updatedAt: false,
-        },
-    })
-    declare members: ManyToMany<typeof User>
+    @hasMany(() => Member)
+    declare members: HasMany<typeof Member>
 
     @manyToMany(() => Tag, {
         pivotTable: 'tags_pivot',
         pivotColumns: ['weight'],
-        pivotTimestamps: false
+        pivotTimestamps: false,
     })
     declare tags: ManyToMany<typeof Tag>
 }
