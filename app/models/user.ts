@@ -42,6 +42,9 @@ export default class User extends compose(BaseModel, AuthFinder) {
     @hasOne(() => Profile)
     declare profile: HasOne<typeof Profile>
 
+    /**
+     * Absolute user role throughout the application. This role overrides the relative role in walls if it is larger.
+     */
     @belongsTo(() => Role)
     declare role: BelongsTo<typeof Role>
 

@@ -27,8 +27,11 @@ export default class Member extends BaseModel {
     @belongsTo(() => Wall)
     declare wall: BelongsTo<typeof Wall>
 
+    /**
+     * Relative role of the user in the current wall. This role will be overridden by the absolute role if it is greater than the local role.
+     */
     @belongsTo(() => Role, {
         foreignKey: 'localRoleId',
     })
-    declare localRole: BelongsTo<typeof Role>
+    declare role: BelongsTo<typeof Role>
 }
