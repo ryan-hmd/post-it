@@ -16,6 +16,8 @@ export default class Role extends BaseModel {
     @hasMany(() => User)
     declare users: HasMany<typeof User>
 
-    @hasMany(() => Member)
+    @hasMany(() => Member, {
+        foreignKey: 'localRoleId',
+    })
     declare members: HasMany<typeof Member>
 }
