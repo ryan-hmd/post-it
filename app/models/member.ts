@@ -16,7 +16,7 @@ export default class Member extends BaseModel {
     declare wallId: number
 
     @column()
-    declare localRoleId: number
+    declare roleId: number
 
     @column.dateTime({ autoCreate: true })
     declare createdAt: DateTime
@@ -30,8 +30,6 @@ export default class Member extends BaseModel {
     /**
      * Relative role of the user in the current wall. This role will be overridden by the absolute role if it is greater than the local role.
      */
-    @belongsTo(() => Role, {
-        foreignKey: 'localRoleId',
-    })
+    @belongsTo(() => Role)
     declare role: BelongsTo<typeof Role>
 }
