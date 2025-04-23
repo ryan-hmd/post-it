@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
-import type { ReportReason, ReportStatus, ReportTargetType } from '#types/enums'
+import type { ReportReason, ReportStatus, ReportTargetType } from '#enums/report'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import User from './user.js'
 
