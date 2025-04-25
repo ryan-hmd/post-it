@@ -29,8 +29,10 @@ export default class Notification extends BaseModel {
     @column.dateTime({ autoCreate: true })
     declare createdAt: DateTime
 
-    @column.dateTime({ autoCreate: true, autoUpdate: true })
-    declare updatedAt: DateTime
+    @column.dateTime()
+    declare openedAt: DateTime
+
+    // TODO : create a hook markAsOpened to update 'openedAt'
 
     @belongsTo(() => User)
     declare User: BelongsTo<typeof User>
