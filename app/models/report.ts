@@ -44,4 +44,6 @@ export default class Report extends BaseModel {
         foreignKey: 'moderatorId',
     })
     declare moderator: BelongsTo<typeof User>
+
+    // TODO : create custom hooks to fetch Report related to posts, users, walls
 }
