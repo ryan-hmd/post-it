@@ -24,4 +24,6 @@ export const reportReason = [
 
 export type ReportReason = (typeof reportReason)[number]
 export type ReportStatus = (typeof reportStatus)[number]
-export type ReportTargetType = 'users' | 'postits' | 'walls'
+
+export const reportTargets = ['users', 'postits', 'walls'] as const
+export type ReportTargetType = (typeof reportTargets)[number]
