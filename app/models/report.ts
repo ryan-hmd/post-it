@@ -46,4 +46,5 @@ export default class Report extends BaseModel {
     declare moderator: BelongsTo<typeof User>
 
     // TODO : create custom hooks to fetch Report related to posts, users, walls
+    // TODO : create a hook to simulate 'CASCADE' behavior for target_id
 }
