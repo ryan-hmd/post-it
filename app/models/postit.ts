@@ -28,7 +28,7 @@ export default class Postit extends BaseModel {
     @column()
     declare content: string
 
-    // We keep a track on Post-it / Response for moderation purpose
+    // We keep a track on Post-it for moderation purpose
     @column()
     declare deleted: boolean
 
@@ -44,7 +44,7 @@ export default class Postit extends BaseModel {
     declare author: BelongsTo<typeof User>
 
     @hasMany(() => Comment, {
-        foreignKey: 'threadId'
+        foreignKey: 'threadId',
     })
     declare replies: HasMany<typeof Comment>
 
@@ -54,7 +54,7 @@ export default class Postit extends BaseModel {
     @manyToMany(() => Tag, {
         pivotTable: 'tags_pivot',
         pivotColumns: ['weight'],
-        pivotTimestamps: false
+        pivotTimestamps: false,
     })
     declare postits: ManyToMany<typeof Tag>
 }
