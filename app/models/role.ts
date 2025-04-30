@@ -13,6 +13,9 @@ export default class Role extends BaseModel {
     @column()
     declare description: string
 
+    @column()
+    declare level: number
+
     @hasMany(() => User)
     declare users: HasMany<typeof User>
 

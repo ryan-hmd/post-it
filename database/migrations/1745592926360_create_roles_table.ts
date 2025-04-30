@@ -8,6 +8,7 @@ export default class extends BaseSchema {
             table.increments('id').primary()
             table.string('name', 16).unique()
             table.string('description').defaultTo(null)
+            table.integer('level').unsigned().notNullable().defaultTo(0)
         })
     }
 
