@@ -1,4 +1,4 @@
-import { notificationStatus } from '#enums/notification'
+import { NOTIFS } from '#shared/notification'
 import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class extends BaseSchema {
@@ -9,7 +9,10 @@ export default class extends BaseSchema {
             table.increments('id').primary()
             table.integer('user_id').unsigned().references('users.id').onDelete('CASCADE')
             table.string('href').defaultTo(null)
-            table.enum('status', notificationStatus).defaultTo(null)
+            table
+                .string('status')
+                .checkIn([...NOTIFS])
+                .defaultTo(null)
             table.string('title', 64).notNullable()
             table.string('description').defaultTo(null)
             table.boolean('opened').defaultTo(false)
