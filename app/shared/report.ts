@@ -1,6 +1,6 @@
-export const reportStatus = ['PENDING', 'REVIEW', 'REJECTED', 'ACCEPTED'] as const
-
-export const reportReason = [
+export const REPORT_STATUS = ['pending', 'review', 'rejected', 'accepted'] as const
+export const REPORT_TARGETS = ['users', 'postits', 'walls'] as const
+export const REPORT_REASONS = [
     'SPAM',
     'HARASSMENT',
     'HATE',
@@ -22,8 +22,6 @@ export const reportReason = [
     'OTHER',
 ] as const
 
-export type ReportReason = (typeof reportReason)[number]
-export type ReportStatus = (typeof reportStatus)[number]
-
-export const reportTargets = ['users', 'postits', 'walls'] as const
-export type ReportTargetType = (typeof reportTargets)[number]
+export type ReportStatus = (typeof REPORT_STATUS)[number]
+export type ReportTarget = (typeof REPORT_TARGETS)[number]
+export type ReportReason = (typeof REPORT_REASONS)[number]

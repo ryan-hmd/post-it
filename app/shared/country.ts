@@ -1,5 +1,5 @@
 //prettier-ignore
-export const countryCodes = [
+export const COUNTRIES = [
     "AF" , "AX" , "AL" , "DZ" , "AS" , "AD" , "AO" , "AI" , "AQ" , "AG", 
     "AR" , "AM" , "AW" , "AU" , "AT" , "AZ" , "BS" , "BH" , "BD" , "BB",
     "BY" , "BE" , "BZ" , "BJ" , "BM" , "BT" , "BO" , "BQ" , "BA" , "BW",
@@ -26,4 +26,4 @@ export const countryCodes = [
     "TV" , "UG" , "UA" , "AE" , "GB" , "US" , "UM" , "UY" , "UZ" , "VU",
     "VE" , "VN" , "VG" , "VI" , "WF" , "EH" , "YE" , "ZM" , "ZW" ] as const
 
-export type CountryCode = (typeof countryCodes)[number]
+export type Country = (typeof COUNTRIES)[number]

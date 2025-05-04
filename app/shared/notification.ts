@@ -1,4 +1,4 @@
-export const notificationStatus = [
+export const NOTIFS = [
     'POSTIT_CREATED',
     'POSTIT_REPLY',
     'POSTIT_LIKED',
@@ -21,4 +21,4 @@ export const notificationStatus = [
     'SYSTEM_MESSAGE',
 ] as const
 
-export type NotificationStatus = (typeof notificationStatus)[number]
+export type Notif = (typeof NOTIFS)[number]
