@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
-import type { CountryCode } from '#enums/country'
+import type { Country } from '#shared/country'
 import User from './user.js'
 
 export default class Profile extends BaseModel {
@@ -18,7 +18,7 @@ export default class Profile extends BaseModel {
     declare lastName?: string
 
     @column()
-    declare countryCode?: CountryCode
+    declare countryCode?: Country
 
     @column()
     declare pictureURL?: string

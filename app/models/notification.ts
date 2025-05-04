@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
-import type { NotificationStatus } from '#enums/notification'
+import type { Notif } from '#shared/notification'
 import User from './user.js'
 
 export default class Notification extends BaseModel {
@@ -15,7 +15,7 @@ export default class Notification extends BaseModel {
     declare href?: string
 
     @column()
-    declare status: NotificationStatus
+    declare status: Notif
 
     @column()
     declare title: string

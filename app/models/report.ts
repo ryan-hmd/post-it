@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
-import type { ReportReason, ReportStatus, ReportTargetType } from '#enums/report'
+import type { ReportReason, ReportStatus, ReportTarget } from '#shared/report'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import User from './user.js'
 
@@ -12,7 +12,7 @@ export default class Report extends BaseModel {
     declare reporterId: number
 
     @column()
-    declare targetType: ReportTargetType
+    declare targetType: ReportTarget
 
     @column()
     declare targetId: number
